@@ -10,11 +10,10 @@ function Navbar() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center"
+          className="flex items-center gap-6"
           onClick={() => {
             setMobileOpen(false);
             setServicesOpen(false);
@@ -29,11 +28,9 @@ function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 lg:flex">
-
-          {/* Home */}
           <Link
             to="/"
-            className="text-sm font-medium text-slate-700 transition hover:text-cyan-600"
+            className="text-sm font-medium text-slate-700 px-3 py-2 rounded-lg border border-transparent transition-all duration-300 hover:bg-cyan-50 hover:text-cyan-600 hover:border-cyan-200 hover:shadow-sm"
           >
             Home
           </Link>
@@ -41,7 +38,7 @@ function Navbar() {
           {/* About */}
           <Link
             to="/about"
-            className="text-sm font-medium text-slate-700 transition hover:text-cyan-600"
+            className="text-sm font-medium text-slate-700 px-3 py-2 rounded-lg border border-transparent transition-all duration-300 hover:bg-cyan-50 hover:text-cyan-600 hover:border-cyan-200 hover:shadow-sm"
           >
             About Us
           </Link>
@@ -50,10 +47,9 @@ function Navbar() {
           <div className="relative">
             <button
               onClick={() => setServicesOpen(!servicesOpen)}
-              className="flex items-center gap-1 text-sm font-medium text-slate-700 transition hover:text-cyan-600"
+              className="flex items-center gap-1 text-sm font-medium text-slate-700 px-3 py-2 rounded-lg border border-transparent transition-all duration-300 hover:bg-cyan-50 hover:text-cyan-600 hover:border-cyan-200 hover:shadow-sm"
             >
               Products & Services
-
               <ChevronDown
                 size={16}
                 className={`transition-transform ${
@@ -64,7 +60,6 @@ function Navbar() {
 
             {servicesOpen && (
               <div className="absolute left-0 top-full mt-4 w-64 rounded-xl border border-slate-200 bg-white p-2 shadow-xl">
-
                 {/* All Services */}
                 <Link
                   to="/services"
@@ -100,7 +95,6 @@ function Navbar() {
                 >
                   Data Protection Advisory
                 </Link>
-
               </div>
             )}
           </div>
@@ -108,7 +102,7 @@ function Navbar() {
           {/* Careers */}
           <Link
             to="/careers"
-            className="text-sm font-medium text-slate-700 transition hover:text-cyan-600"
+            className="text-sm font-medium text-slate-700 px-3 py-2 rounded-lg border border-transparent transition-all duration-300 hover:bg-cyan-50 hover:text-cyan-600 hover:border-cyan-200 hover:shadow-sm"
           >
             Careers
           </Link>
@@ -116,7 +110,7 @@ function Navbar() {
           {/* Blogs */}
           <Link
             to="/blogs"
-            className="text-sm font-medium text-slate-700 transition hover:text-cyan-600"
+            className="text-sm font-medium text-slate-700 px-3 py-2 rounded-lg border border-transparent transition-all duration-300 hover:bg-cyan-50 hover:text-cyan-600 hover:border-cyan-200 hover:shadow-sm"
           >
             Blogs & Updates
           </Link>
@@ -124,11 +118,10 @@ function Navbar() {
           {/* Contact */}
           <Link
             to="/contact"
-            className="rounded-lg bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-cyan-600"
+            className="text-sm font-medium text-slate-700 px-3 py-2 rounded-lg border border-transparent transition-all duration-300 hover:bg-cyan-50 hover:text-cyan-600 hover:border-cyan-200 hover:shadow-sm"
           >
             Contact Us
           </Link>
-
         </nav>
 
         {/* Mobile Menu Button */}
@@ -144,9 +137,7 @@ function Navbar() {
       {/* Mobile Navigation */}
       {mobileOpen && (
         <div className="border-t border-slate-200 bg-white px-6 py-5 lg:hidden">
-
           <div className="flex flex-col gap-2">
-
             {/* Home */}
             <Link
               to="/"
@@ -200,7 +191,6 @@ function Navbar() {
             >
               Contact Us
             </Link>
-
           </div>
         </div>
       )}

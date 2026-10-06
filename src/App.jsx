@@ -10,6 +10,7 @@ import WhyChooseSection from "./components/WhyChooseSection";
 import ProcessSection from "./components/ProcessSection";
 import IndustriesSection from "./components/IndustriesSection";
 import CTASection from "./components/CTASection";
+
 import Services from "./pages/Services";
 import Contact from "./pages/contact";
 import Careers from "./pages/careers";
@@ -17,8 +18,9 @@ import Blogs from "./pages/Blogs";
 import GapAssessment from "./pages/GapAssessment";
 import PrivacyCompliance from "./pages/PrivacyCompliance";
 import DataProtectionAdvisory from "./pages/DataProtectionAdvisory";
-
 import About from "./pages/About";
+import WhatsAppButton from "./components/WhatsAppButton";
+
 
 function Home() {
   return (
@@ -42,19 +44,39 @@ function App() {
 
         <main>
           <Routes>
-            <Route path="/services/data-protection-advisory"element={<DataProtectionAdvisory />}/>
-            <Route path="/services/privacy-compliance"element={<PrivacyCompliance />}/>
-            <Route path="/services/dpdp-gap-assessment"element={<GapAssessment />}/>
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/services" element={<Services />} />
             <Route path="/" element={<Home />} />
+
             <Route path="/about" element={<About />} />
+
+
+            <Route path="/services" element={<Services />} />
+
+            <Route
+              path="/services/dpdp-gap-assessment"
+              element={<GapAssessment />}
+            />
+
+            <Route
+              path="/services/privacy-compliance"
+              element={<PrivacyCompliance />}
+            />
+
+            <Route
+              path="/services/data-protection-advisory"
+              element={<DataProtectionAdvisory />}
+            />
+
+            <Route path="/careers" element={<Careers />} />
+
+            <Route path="/blogs" element={<Blogs />} />
+
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
 
         <Footer />
+
+        <WhatsAppButton />
       </div>
     </BrowserRouter>
   );

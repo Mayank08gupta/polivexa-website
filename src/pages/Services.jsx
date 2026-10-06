@@ -118,7 +118,7 @@ function Services() {
                     duration: 0.5,
                     delay: index * 0.05,
                   }}
-                  className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-xl"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-cyan-300 hover:shadow-2xl"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-50 transition-colors group-hover:bg-cyan-100">
                     <Icon
