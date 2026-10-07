@@ -230,6 +230,7 @@ function DataProtectionAdvisory() {
                 </h3>
 
                 <p className="mt-3 leading-7 text-slate-500">
+                  
                   {text}
                 </p>
               </div>
@@ -246,6 +247,7 @@ function DataProtectionAdvisory() {
           <h2 className="text-4xl font-bold text-white md:text-5xl">
             Have a Privacy or
             <span className="block text-cyan-300">
+              
               Data Protection Challenge?
             </span>
           </h2>
@@ -254,6 +256,7 @@ function DataProtectionAdvisory() {
             Connect with Polivexa to discuss your organization's specific
             privacy and data protection requirements.
           </p>
+
 
           <a
             href="/contact"
