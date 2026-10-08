@@ -10,16 +10,112 @@ import {
 } from "lucide-react";
 
 import abhishekImage from "../assets/abhishek.jpg";
+import ajayImage from "../assets/ajay.jpeg";
 import meghaImage from "../assets/megha.jpeg";
+import ujwalImage from "../assets/ujwal.jpeg";
+
+/* =========================================================
+   FOUNDER / CO-FOUNDER CARD
+========================================================= */
+
+function FounderCard({
+  name,
+  designation,
+  image,
+  reverse = false,
+  children,
+  tags = [],
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 35 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6 }}
+      className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+    >
+      <div className="grid lg:grid-cols-5">
+
+        {/* =====================================================
+            IMAGE
+        ===================================================== */}
+        <div
+          className={`relative h-[480px] overflow-hidden bg-[#06152f] sm:h-[560px] lg:col-span-2 ${
+            reverse ? "lg:order-2" : "lg:order-1"
+          }`}
+        >
+          <img
+            src={image}
+            alt={`${name} - ${designation}`}
+            className="h-full w-full object-cover object-top"
+          />
+
+          {/* Image Bottom Gradient */}
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#06152f] via-[#06152f]/80 to-transparent px-7 pb-7 pt-28">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
+              {designation}
+            </p>
+
+            <h3 className="mt-2 text-2xl font-bold text-white sm:text-3xl">
+              {name}
+            </h3>
+          </div>
+        </div>
+
+        {/* =====================================================
+            CONTENT
+        ===================================================== */}
+        <div
+          className={`flex flex-col justify-center p-7 sm:p-10 lg:col-span-3 lg:p-12 ${
+            reverse ? "lg:order-1" : "lg:order-2"
+          }`}
+        >
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-600 sm:text-sm">
+            {designation}
+          </p>
+
+          <h3 className="mt-3 text-3xl font-bold leading-tight text-[#06152f] sm:text-4xl">
+            {name}
+          </h3>
+
+          {/* Biography */}
+          <div className="mt-7 space-y-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8">
+            {children}
+          </div>
+
+          {/* Tags */}
+          {tags.length > 0 && (
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full bg-cyan-50 px-4 py-2 text-xs font-semibold text-cyan-700 sm:text-sm"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
 
 function About() {
   return (
     <div className="bg-white text-slate-900">
 
-      {/* HERO */}
+      {/* =====================================================
+          HERO
+      ===================================================== */}
       <section className="relative overflow-hidden bg-[#06152f] py-24 sm:py-28">
-        <div className="absolute inset-0">
-          <div className="absolute -left-20 top-10 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
           <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-cyan-300/10 blur-3xl" />
         </div>
 
@@ -51,10 +147,12 @@ function About() {
         </div>
       </section>
 
-      {/* WHO WE ARE */}
+      {/* =====================================================
+          WHO WE ARE
+      ===================================================== */}
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
 
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -66,7 +164,7 @@ function About() {
                 WHO WE ARE
               </p>
 
-              <h2 className="mt-4 text-3xl font-bold text-[#06152f] sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-bold leading-tight text-[#06152f] sm:text-4xl">
                 Practical Solutions for a Changing Digital World
               </h2>
 
@@ -97,7 +195,7 @@ function About() {
               transition={{ duration: 0.6 }}
               className="rounded-3xl bg-[#06152f] p-8 sm:p-10"
             >
-              <ShieldCheck className="text-cyan-300" size={45} />
+              <ShieldCheck size={45} className="text-cyan-300" />
 
               <h3 className="mt-6 text-2xl font-bold text-white">
                 Data. Privacy. Trust.
@@ -111,6 +209,7 @@ function About() {
               </p>
 
               <div className="mt-8 grid grid-cols-2 gap-4">
+
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <ShieldCheck className="text-cyan-300" size={25} />
                   <p className="mt-3 font-semibold text-white">
@@ -138,6 +237,7 @@ function About() {
                     Growth
                   </p>
                 </div>
+
               </div>
             </motion.div>
 
@@ -145,204 +245,240 @@ function About() {
         </div>
       </section>
 
-      {/* FOUNDERS */}
+      {/* =====================================================
+          FOUNDERS
+      ===================================================== */}
       <section className="bg-slate-50 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
+          {/* Heading */}
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-bold tracking-[0.2em] text-cyan-600">
               LEADERSHIP
             </p>
 
-            <h2 className="mt-4 text-3xl font-bold text-[#06152f] sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold text-[#06152f] sm:text-4xl lg:text-5xl">
               Meet Our Founders
             </h2>
 
-            <p className="mt-4 leading-7 text-slate-600">
-              Meet the people driving the vision, growth and direction of
-              Polivexa.
+            <p className="mt-5 leading-7 text-slate-600">
+              Meet the leadership team driving the vision, growth and
+              direction of Polivexa.
             </p>
           </div>
 
-          {/* ABHISHEK */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-14 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
-          >
-            <div className="grid lg:grid-cols-5">
+          {/* =================================================
+              1. ABHISHEK BHARTI — FOUNDER
+          ================================================= */}
+          <div className="mt-14">
+            <FounderCard
+              name="Abhishek Bharti"
+              designation="Founder"
+              image={abhishekImage}
+              tags={[
+                "Entrepreneur",
+                "Innovation",
+                "Technology",
+                "Sustainability",
+              ]}
+            >
+              <p>
+                He was named Times Man of the Year in 2019 for his
+                groundbreaking work in AgroTech. He founded Biogreen to
+                connect consumers with natural and organic products,
+                blending technology and sustainability to empower
+                eco-conscious choices.
+              </p>
 
-              <div className="relative min-h-[420px] overflow-hidden bg-[#06152f] lg:col-span-2">
-                <img
-                  src={abhishekImage}
-                  alt="Abhishek Bharti - Founder of Polivexa"
-                  className="absolute inset-0 h-full w-full object-cover object-top"
-                />
+              <p>
+                Abhishek's vision for Biogreen goes beyond offering organic
+                products; it is about creating a community focused on
+                sustainability.
+              </p>
 
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#06152f] via-[#06152f]/70 to-transparent p-7 pt-24">
-                  <p className="text-sm font-semibold tracking-wider text-cyan-300">
-                    FOUNDER
-                  </p>
+              <p>
+                By empowering individuals to make conscious choices, he has
+                made a significant impact on the environment and continues
+                to support both their health and the planet.
+              </p>
+            </FounderCard>
+          </div>
 
-                  <h3 className="mt-1 text-2xl font-bold text-white">
-                    Abhishek Bharti
-                  </h3>
-                </div>
-              </div>
+          {/* =================================================
+              2. AJAY KUMAR PASWAN — CO-FOUNDER
+          ================================================= */}
+          <div className="mt-10">
+            <FounderCard
+              name="Ajay Kumar Paswan"
+              designation="Co-Founder"
+              image={ajayImage}
+              reverse
+              tags={[
+                "Leadership",
+                "Media",
+                "International Trade",
+                "Social Development",
+              ]}
+            >
+              <p>
+                Mr. Ajay Kumar Paswan is a young, dynamic, and forward-looking
+                professional with extensive experience in media, international
+                trade, renewable energy, government projects, and social
+                development initiatives. A postgraduate from the University
+                of Allahabad, he has built a diverse professional career
+                through leadership roles across multiple sectors.
+              </p>
 
-              <div className="p-8 lg:col-span-3 lg:p-12">
+              <p>
+                From 2010 to 2013, Mr. Paswan served as the Managing Director
+                of <strong>DAP Pvt. Ltd.</strong>, where he contributed to
+                the company's strategic growth and business development.
+              </p>
 
-                <p className="text-sm font-bold tracking-[0.2em] text-cyan-600">
-                  VISIONARY ENTREPRENEUR
-                </p>
+              <p>
+                Between 2013 and 2015, he served as the Managing Director of{" "}
+                <strong>Geekfix International Pvt. Ltd.</strong>, overseeing
+                projects related to renewable energy and electrification
+                implemented in collaboration with state governments in Uttar
+                Pradesh and other parts of India.
+              </p>
 
-                <h3 className="mt-3 text-3xl font-bold text-[#06152f]">
-                  Hi, I'm Abhishek Bharti
-                </h3>
+              <p>
+                Mr. Paswan is also associated with the{" "}
+                <strong>Rashtriya Vikas Samiti</strong>, where he serves as
+                Chairman and contributes to various government initiatives
+                and development-oriented programmes.
+              </p>
 
-                <div className="mt-6 space-y-5 leading-8 text-slate-600">
-                  <p>
-                    A visionary entrepreneur with a strong focus on
-                    innovation, technology and sustainable growth.
-                  </p>
+              <p>
+                In the field of journalism and digital media, he is the
+                Publisher and Editor-in-Chief of{" "}
+                <strong>Newsline Network</strong>, a media organisation with
+                a presence across several states of India.
+              </p>
 
-                  <p>
-                    He was named Times Man of the Year in 2019 for his
-                    groundbreaking work in AgroTech. He founded Polivexa with
-                    a vision to combine technology, innovation and
-                    responsible business practices to create meaningful
-                    solutions.
-                  </p>
+              <p>
+                He is also the Chief Executive Officer of{" "}
+                <strong>Link Globe Line LLP</strong>, an international
+                trading company engaged in cross-border business and trade
+                activities with a presence in multiple countries.
+              </p>
 
-                  <p>
-                    Abhishek's vision goes beyond building a business; it is
-                    about creating a community focused on trust, innovation
-                    and sustainable value.
-                  </p>
+              <p>
+                Known for his optimism, strategic vision, and commitment to
+                public and business development, Mr. Ajay Kumar Paswan
+                continues to work towards creating meaningful opportunities
+                in media, commerce, infrastructure, and social development.
+              </p>
+            </FounderCard>
+          </div>
 
-                  <p>
-                    By empowering individuals and organizations to make
-                    informed and conscious decisions, he continues to work
-                    towards creating a meaningful impact through technology
-                    and entrepreneurship.
-                  </p>
-                </div>
+          {/* =================================================
+              3. MEGHA KUMARI — CO-FOUNDER
+          ================================================= */}
+          <div className="mt-10">
+            <FounderCard
+              name="Megha Kumari"
+              designation="Co-Founder"
+              image={meghaImage}
+              tags={[
+                "Leadership",
+                "Strategy",
+                "Collaboration",
+                "Innovation",
+              ]}
+            >
+              <p>
+                Megha Kumari is a passionate and result-oriented professional
+                having Postgraduate qualifications.
+              </p>
 
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <span className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700">
-                    Innovation
-                  </span>
+              <p>
+                She has demonstrated a strong ability to work across diverse
+                teams, support strategic decision-making, and contribute to
+                business transformation initiatives.
+              </p>
 
-                  <span className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700">
-                    Leadership
-                  </span>
+              <p>
+                With exposure to stakeholder management, process improvement,
+                and organizational development, she is committed to driving
+                growth through innovation and collaboration.
+              </p>
 
-                  <span className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700">
-                    Technology
-                  </span>
+              <p>
+                She believes in continuous learning and creating sustainable
+                value through leadership and excellence.
+              </p>
+            </FounderCard>
+          </div>
 
-                  <span className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700">
-                    Sustainability
-                  </span>
-                </div>
+          {/* =================================================
+              4. UJJAWAL RAJ — CO-FOUNDER
+          ================================================= */}
+          <div className="mt-10">
+            <FounderCard
+              name="Ujjawal Raj"
+              designation="Co-Founder"
+              image={ujwalImage}
+              tags={[
+                "Young Achiever",
+                "Entrepreneur",
+                "Business & Operations",
+                "Technology",
+              ]}
+            >
+              <p>
+                Ujjawal Raj is a young entrepreneur and business professional
+                known for his work in entrepreneurship, technology,
+                operations, and innovation. With a strong focus on building
+                scalable business solutions, he has been actively involved
+                in developing ventures that connect technology with
+                real-world business and consumer needs.
+              </p>
 
-              </div>
-            </div>
-          </motion.div>
+              <p>
+                He has played an important role in the development of{" "}
+                <strong>Biosprout Technologies Private Limited</strong> and
+                its digital initiatives, including{" "}
+                <strong>OQART</strong>, a platform focused on promoting
+                authentic organic and GI-certified products and creating
+                better market access for producers and consumers.
+              </p>
 
-          {/* MEGHA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-10 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
-          >
-            <div className="grid lg:grid-cols-5">
+              <p>
+                Ujjawal's professional journey reflects his interest in{" "}
+                <em>
+                  entrepreneurship, digital transformation, business
+                  operations, process development, and technology-driven
+                  solutions
+                </em>
+                . He has also been involved in startup development, team
+                coordination, project execution, compliance initiatives, and
+                building structured operational systems.
+              </p>
 
-              <div className="relative min-h-[420px] overflow-hidden bg-slate-100 lg:order-2 lg:col-span-2">
-                <img
-                  src={meghaImage}
-                  alt="Megha Kumari - Co-Founder of Polivexa"
-                  className="absolute inset-0 h-full w-full object-cover object-top"
-                />
+              <p>
+                His work has received recognition through the{" "}
+                <strong>Young Achiever Award</strong>, acknowledging his
+                contribution and achievements at a young stage of his
+                professional journey.
+              </p>
 
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#06152f] via-[#06152f]/70 to-transparent p-7 pt-24">
-                  <p className="text-sm font-semibold tracking-wider text-cyan-300">
-                    CO-FOUNDER
-                  </p>
-
-                  <h3 className="mt-1 text-2xl font-bold text-white">
-                    Megha Kumari
-                  </h3>
-                </div>
-              </div>
-
-              <div className="p-8 lg:order-1 lg:col-span-3 lg:p-12">
-
-                <p className="text-sm font-bold tracking-[0.2em] text-cyan-600">
-                  LEADERSHIP & STRATEGY
-                </p>
-
-                <h3 className="mt-3 text-3xl font-bold text-[#06152f]">
-                  Megha Kumari
-                </h3>
-
-                <div className="mt-6 space-y-5 leading-8 text-slate-600">
-
-                  <p>
-                    Megha Kumari is a passionate and result-oriented
-                    professional having Postgraduate qualifications.
-                  </p>
-
-                  <p>
-                    She has demonstrated a strong ability to work across
-                    diverse teams, support strategic decision-making, and
-                    contribute to business transformation initiatives.
-                  </p>
-
-                  <p>
-                    With exposure to stakeholder management, process
-                    improvement, and organizational development, she is
-                    committed to driving growth through innovation and
-                    collaboration.
-                  </p>
-
-                  <p>
-                    She believes in continuous learning and creating
-                    sustainable value through leadership and excellence.
-                  </p>
-
-                </div>
-
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <span className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700">
-                    Leadership
-                  </span>
-
-                  <span className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700">
-                    Strategy
-                  </span>
-
-                  <span className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700">
-                    Collaboration
-                  </span>
-
-                  <span className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-semibold text-cyan-700">
-                    Innovation
-                  </span>
-                </div>
-
-              </div>
-            </div>
-          </motion.div>
+              <p>
+                With a vision of creating meaningful businesses that combine
+                innovation, technology, and social impact, Ujjawal Raj
+                continues to work toward building sustainable ventures and
+                contributing to India's growing startup ecosystem.
+              </p>
+            </FounderCard>
+          </div>
 
         </div>
       </section>
 
-      {/* MISSION & VISION */}
+      {/* =====================================================
+          MISSION & VISION
+      ===================================================== */}
       <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
@@ -394,7 +530,9 @@ function About() {
         </div>
       </section>
 
-      {/* VALUES */}
+      {/* =====================================================
+          VALUES
+      ===================================================== */}
       <section className="bg-slate-50 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
@@ -444,7 +582,7 @@ function About() {
                     duration: 0.5,
                     delay: index * 0.08,
                   }}
-                  className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm"
+                  className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-50">
                     <Icon className="text-cyan-600" size={24} />
@@ -465,7 +603,9 @@ function About() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* =====================================================
+          CTA
+      ===================================================== */}
       <section className="bg-[#06152f] py-20">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
 
